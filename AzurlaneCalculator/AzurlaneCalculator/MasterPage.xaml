@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:AzurlaneCalculator"
+	x:Class="AzurlaneCalculator.MasterPage"
+	Padding="0,40,0,0"
+	Title="アズレン計算機">
+
+	<StackLayout VerticalOptions="FillAndExpand">
+		<ListView VerticalOptions="FillAndExpand" SeparatorVisibility="None"
+				ItemsSource="{Binding MenuList}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<TextCell Text="{Binding Title}" />
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+
+</ContentPage>

@@ -13,7 +13,7 @@ namespace AzurlaneCalculator
 		{
 			InitializeComponent();
 
-			MainPage = new AzurlaneCalculator.MainPage();
+			MainPage = new AzurlaneCalculator.DetailPage();
 		}
 
 		protected override void OnStart ()
