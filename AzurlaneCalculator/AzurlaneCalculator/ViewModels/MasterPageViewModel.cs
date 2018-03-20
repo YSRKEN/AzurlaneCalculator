@@ -1,30 +1,36 @@
 ﻿using Reactive.Bindings;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 
 namespace AzurlaneCalculator
 {
 	class MasterPageViewModel : INotifyPropertyChanged
 	{
-#pragma warning disable 0067
+		#pragma warning disable 0067
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public ReadOnlyReactiveCollection<MenuItem> MenuList { get; }
+		// ReactiveProperty
 		public ReactiveProperty<MenuItem> SelectedMenuItem { get; set; }
-		 = new ReactiveProperty<MenuItem>();
+			= new ReactiveProperty<MenuItem>();
+		// ReactiveCollection
+		public ReadOnlyReactiveCollection<MenuItem> MenuList { get; }
 
+		// コンストラクタ
 		public MasterPageViewModel()
 		{
-			var menuList = new List<MenuItem> {
+			#region ReactiveCollectionを設定
+			// MenuList
+			{
+				var menuList = new List<MenuItem> {
 				new MenuItem {Title = "ホーム", TargetType = typeof(MainPage) },
 				new MenuItem {Title = "経験値計算機", TargetType = typeof(CalcExpPage) },
 				new MenuItem {Title = "このアプリについて", TargetType = typeof(AboutPage) },
 			};
-			var oc = new ObservableCollection<MenuItem>(menuList);
-			MenuList = oc.ToReadOnlyReactiveCollection();
+				var oc = new ObservableCollection<MenuItem>(menuList);
+				MenuList = oc.ToReadOnlyReactiveCollection();
+			}
+			#endregion
 		}
 	}
 }

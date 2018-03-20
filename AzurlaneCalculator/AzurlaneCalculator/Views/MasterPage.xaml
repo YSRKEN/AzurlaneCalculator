@@ -7,7 +7,7 @@
 	Title="アズレン計算機">
 
 	<StackLayout VerticalOptions="FillAndExpand">
-		<Label Text="メニュー" FontSize="Large"/>
+		<Label Text="メニュー" FontSize="Large" Margin="10,10,10,10"/>
 		<ListView VerticalOptions="FillAndExpand" SeparatorVisibility="None"
 				ItemsSource="{Binding MenuList}"
 				SelectedItem="{Binding SelectedMenuItem.Value}">
@@ -18,5 +18,4 @@
 			</ListView.ItemTemplate>
 		</ListView>
 	</StackLayout>
-
 </ContentPage>

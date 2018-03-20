@@ -10,32 +10,37 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CalcExpPage.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AboutPage.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)DetailPage.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MasterPage.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DetailPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AboutPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)CalcExpPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml.cs">
       <DependentUpon>CalcExpPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MasterPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)DetailPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MasterPageViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>
