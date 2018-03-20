@@ -17,6 +17,8 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcExp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcExpPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -41,6 +43,5 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
-    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

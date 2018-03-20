@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AzurlaneCalculator.ViewModels;
+using Xamarin.Forms;
 
 namespace AzurlaneCalculator.Views
 {
@@ -7,6 +8,7 @@ namespace AzurlaneCalculator.Views
 		public CalcExpPage()
 		{
 			InitializeComponent();
+			this.BindingContext = new CalcExpPageViewModel();
 		}
 	}
 }
