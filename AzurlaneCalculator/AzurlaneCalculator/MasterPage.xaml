@@ -7,8 +7,10 @@
 	Title="アズレン計算機">
 
 	<StackLayout VerticalOptions="FillAndExpand">
+		<Label Text="アズレン計算機" FontSize="Large" HorizontalOptions="Center"/>
 		<ListView VerticalOptions="FillAndExpand" SeparatorVisibility="None"
-				ItemsSource="{Binding MenuList}">
+				ItemsSource="{Binding MenuList}"
+				SelectedItem="{Binding SelectedMenuItem.Value}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<TextCell Text="{Binding Title}" />

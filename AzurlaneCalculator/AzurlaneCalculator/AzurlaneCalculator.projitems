@@ -27,7 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MainPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MenuItem.cs" />
   </ItemGroup>
 </Project>

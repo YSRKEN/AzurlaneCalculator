@@ -5,12 +5,12 @@
 	x:Class="AzurlaneCalculator.DetailPage">
 
 	<MasterDetailPage.Master>
-		<local:MasterPage />
+		<local:MasterPage/>
 	</MasterDetailPage.Master>
 	<MasterDetailPage.Detail>
 		<NavigationPage>
 			<x:Arguments>
-				<local:MainPage />
+				<local:MainPage/>
 			</x:Arguments>
 		</NavigationPage>
 	</MasterDetailPage.Detail>

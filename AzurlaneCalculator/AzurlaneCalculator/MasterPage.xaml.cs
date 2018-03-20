@@ -14,7 +14,7 @@ namespace AzurlaneCalculator
 		public MasterPage()
 		{
 			InitializeComponent();
-			this.BindingContext = new MainPageViewModel();
+			this.BindingContext = new MasterPageViewModel();
 		}
 	}
 }
