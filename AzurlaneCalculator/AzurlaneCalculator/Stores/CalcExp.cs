@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace AzurlaneCalculator.Stores
@@ -7,30 +8,36 @@ namespace AzurlaneCalculator.Stores
 	static class CalcExp
 	{
 		// レベルに応じた経験値表
-		private static List<int> expList = new List<int>
-		{
-			0,50,110,180,260,360,480,620,790,990,
-			1220,1490,1800,2150,2550,3000,3500,4060,4680,5360,
-			6110,6930,7820,8790,9840,10970,12190,13500,14900,16400,
-			18000,19700,21510,23430,25460,27610,29880,32270,34790,37440,
-			40220,43140,46200,49400,52750,56250,59900,63710,67680,71810,
-			76110,80670,85490,90580,95940,101580,107500,113710,120210,127010,
-			134110,141520,149240,157280,165640,174330,183350,192710,202410,212460,
-			222860,233980,245830,258420,271760,285860,300730,316380,332820,350060,
-			368110,386980,406680,427220,448610,470860,493980,517980,542870,568660,
-			595360,623900,654300,686580,720760,756860,794900,834900,876880,920860,
-			966860,1014900,1065000,1117180,1171460,1227860,1286400,1347100,1409980,1475060,
-			1542360,
-		};
+		private static List<int> levelExpList = ReadLevelExpList();
+		// 経験値表を初期化する
+		private static List<int> ReadLevelExpList(){
+			// 出力先を用意する
+			var output = new List<int>();
+			// 1行づつ読み込み、出力先に追記していく
+			using (var stream = Utility.GetResourceStream("AzurlaneCalculator", "Resources.LevelExpList.txt"))
+			using (var reader = new StreamReader(stream, Encoding.UTF8))
+			{
+				string line;
+				while ((line = reader.ReadLine()) != null) {
+					int exp;
+					if(int.TryParse(line, out exp)) {
+						output.Add(exp);
+					}
+				}
+			}
+			return output;
+		}
+
 		// 最大レベル・最小レベル
 		public static int MinLevel { get; } = 1;
-		public static int MaxLevel { get; } = expList.Count;
+		public static int MaxLevel { get; } = levelExpList.Count;
 		// あるレベルにおける総経験値を取得する
 		public static int LevelExp(int level)
 		{
+			
 			if (level < MinLevel || level > MaxLevel)
 				return -1;
-			return expList[level - 1];
+			return levelExpList[level - 1];
 		}
 	}
 }

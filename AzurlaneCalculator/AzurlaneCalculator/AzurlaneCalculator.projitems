@@ -18,6 +18,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcExp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Stores\Utility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcExpPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -43,5 +44,8 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\LevelExpList.txt" />
   </ItemGroup>
 </Project>
