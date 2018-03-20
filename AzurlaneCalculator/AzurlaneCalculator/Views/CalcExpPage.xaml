@@ -4,31 +4,30 @@
 	x:Class="AzurlaneCalculator.Views.CalcExpPage">
 
 	<StackLayout>
-		<Label Text="経験値計算機"
-		Margin="10,10,10,10" FontSize="Large"
+		<Label Text="経験値計算機" Margin="10,10,10,10"
+		FontSize="Large" FontAttributes="Bold"
 		HorizontalOptions="Center"/>
 		<Grid HorizontalOptions="Center">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition Width="auto"/>
+				<ColumnDefinition Width="auto"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
 				<RowDefinition/>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 			<Label Grid.Row="0" Grid.Column="0" Text="現在のレベル："
-				FontSize="Large" HorizontalOptions="End" Margin="10,10,10,10"/>
+				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
 			<Label Grid.Row="1" Grid.Column="0" Text="目標のレベル："
-				FontSize="Large" HorizontalOptions="End" Margin="10,10,10,10"/>
+				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
 			<Picker Grid.Row="0" Grid.Column="1" WidthRequest="50"
 				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding StartLevelIndex.Value, Mode=TwoWay}"
-				HorizontalOptions="End" Margin="10,10,10,10"/>
+				HorizontalOptions="Start" VerticalOptions="Center"/>
 			<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
 				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding GoalLevelIndex.Value, Mode=TwoWay}"
-				HorizontalOptions="End" Margin="10,10,10,10"/>
+				HorizontalOptions="Start" VerticalOptions="Center"/>
 		</Grid>
 		<Label Text="{Binding OutputText.Value, Mode=OneWay}"
-		Margin="10,10,10,10" FontSize="Large"
-		HorizontalOptions="Center"/>
+		FontSize="Large" HorizontalOptions="Center"/>
 	</StackLayout>
 </ContentPage>
