@@ -7,7 +7,7 @@
 	Title="アズレン計算機">
 
 	<StackLayout VerticalOptions="FillAndExpand">
-		<Label Text="アズレン計算機" FontSize="Large" HorizontalOptions="Center"/>
+		<Label Text="メニュー" FontSize="Large"/>
 		<ListView VerticalOptions="FillAndExpand" SeparatorVisibility="None"
 				ItemsSource="{Binding MenuList}"
 				SelectedItem="{Binding SelectedMenuItem.Value}">

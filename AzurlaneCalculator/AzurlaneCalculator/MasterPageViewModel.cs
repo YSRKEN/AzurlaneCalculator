@@ -19,8 +19,9 @@ namespace AzurlaneCalculator
 		public MasterPageViewModel()
 		{
 			var menuList = new List<MenuItem> {
-				new MenuItem {Title = "経験値計算機", TargetType = typeof(MainPage) },
-				new MenuItem {Title = "このアプリについて", TargetType = typeof(MainPage) },
+				new MenuItem {Title = "ホーム", TargetType = typeof(MainPage) },
+				new MenuItem {Title = "経験値計算機", TargetType = typeof(CalcExpPage) },
+				new MenuItem {Title = "このアプリについて", TargetType = typeof(AboutPage) },
 			};
 			var oc = new ObservableCollection<MenuItem>(menuList);
 			MenuList = oc.ToReadOnlyReactiveCollection();

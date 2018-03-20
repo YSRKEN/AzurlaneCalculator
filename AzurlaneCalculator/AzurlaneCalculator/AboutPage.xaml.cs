@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace AzurlaneCalculator
 {
-	public partial class MainPage : ContentPage
+	public partial class AboutPage : ContentPage
 	{
-		public MainPage ()
+		public AboutPage ()
 		{
 			InitializeComponent ();
 		}
