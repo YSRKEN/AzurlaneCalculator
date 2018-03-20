@@ -1,7 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
+using AzurlaneCalculator.ViewModels;
 
-namespace AzurlaneCalculator
+namespace AzurlaneCalculator.Views
 {
 	public partial class DetailPage : MasterDetailPage
 	{

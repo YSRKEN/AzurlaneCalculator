@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AzurlaneCalculator
+namespace AzurlaneCalculator.Models
 {
 	public class MenuItem
 	{

@@ -1,6 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using AzurlaneCalculator.ViewModels;
+using Xamarin.Forms;
 
-namespace AzurlaneCalculator
+namespace AzurlaneCalculator.Views
 {
 	public partial class MasterPage : ContentPage
 	{

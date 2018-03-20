@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace AzurlaneCalculator
+namespace AzurlaneCalculator.Views
 {
 	public partial class CalcExpPage : ContentPage
 	{

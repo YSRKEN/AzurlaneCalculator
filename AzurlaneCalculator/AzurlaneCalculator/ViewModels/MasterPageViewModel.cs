@@ -1,9 +1,11 @@
-﻿using Reactive.Bindings;
+﻿using AzurlaneCalculator.Models;
+using AzurlaneCalculator.Views;
+using Reactive.Bindings;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace AzurlaneCalculator
+namespace AzurlaneCalculator.ViewModels
 {
 	class MasterPageViewModel : INotifyPropertyChanged
 	{

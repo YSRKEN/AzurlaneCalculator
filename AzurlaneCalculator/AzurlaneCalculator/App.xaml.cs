@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AzurlaneCalculator.Views;
+using Xamarin.Forms;
 
 namespace AzurlaneCalculator
 {
@@ -8,7 +9,7 @@ namespace AzurlaneCalculator
 		{
 			InitializeComponent();
 
-			MainPage = new AzurlaneCalculator.DetailPage();
+			MainPage = new DetailPage();
 		}
 
 		protected override void OnStart ()
