@@ -1,6 +1,8 @@
 ﻿using AzurlaneCalculator.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AzurlaneCalculator
 {
 	public partial class App : Application

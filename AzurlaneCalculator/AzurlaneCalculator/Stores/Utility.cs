@@ -8,14 +8,14 @@ namespace AzurlaneCalculator.Stores
 {
 	static class Utility
 	{
-		// リソースのStreamを存在パスとファイル名から取得する
-		public static Stream GetResourceStream(string path, string name) {
+		// リソースのStreamをファイル名から取得する
+		public static Stream GetResourceStream(string name) {
 			// リフレクションにより、アセンブリ情報を取得する
 			var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 			// アセンブリ情報から、リソース名の一覧を取得する
 			string[] resnames = assembly.GetManifestResourceNames();
 			// リソース名の一覧を検索し、条件に合ったものを返す
-			var regex = new Regex($"{path}.+{name}");
+			var regex = new Regex($"Resources.{name}$");
 			foreach(string resname in resnames) {
 				if (regex.IsMatch(resname)) {
 					return assembly.GetManifestResourceStream(resname);
