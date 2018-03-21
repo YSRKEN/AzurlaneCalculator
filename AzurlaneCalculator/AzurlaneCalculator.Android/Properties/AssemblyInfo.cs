@@ -6,12 +6,12 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AzurlaneCalculator.Android")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Calculator for Azurlane by Xamarin.Forms")]
+[assembly: AssemblyDescription("アズールレーン用の各種計算ツールです")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AzurlaneCalculator.Android")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("YSR")]
+[assembly: AssemblyProduct("アズレン計算機")]
+[assembly: AssemblyCopyright("Copyright © 2018 YSR")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

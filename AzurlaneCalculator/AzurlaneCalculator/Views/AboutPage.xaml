@@ -39,6 +39,8 @@
 	</ContentPage>
 	<ContentPage Title="ライセンス情報">
 		<StackLayout Margin="10,10,10,10">
+			<Label Text="・アズレン計算機(当ツール)" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　MIT License" FontSize="Large" HorizontalOptions="Start"/>
 			<Label Text="・Xamarin.Forms" FontSize="Large" HorizontalOptions="Start"/>
 			<Label Text="　　MIT License" FontSize="Large" HorizontalOptions="Start"/>
 			<Label Text="・ReactiveProperty" FontSize="Large" HorizontalOptions="Start"/>
