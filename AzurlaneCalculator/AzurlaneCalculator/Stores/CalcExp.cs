@@ -89,6 +89,8 @@ namespace AzurlaneCalculator.Stores
 			}
 			return output;
 		}
+		// 寮舎に登録した艦数による経験値効率のバフ
+		private static List<decimal> fleetCountCoeff = new List<decimal> { 1.0M, 0.9M, 0.8M, 0.7M, 0.64M };
 
 		// 最大レベル・最小レベル
 		public static int MinLevel { get; } = 1;
@@ -127,7 +129,7 @@ namespace AzurlaneCalculator.Stores
 			}
 		}
 		// 海域経験値に施すブーストを計算
-		public static decimal ExpBoost(
+		public static decimal StageExpBoost(
 			bool LeaderFlg, bool MvpFlg,
 			bool CondFlg, bool RankSFlg) {
 			decimal boost = 1.0M;
@@ -135,6 +137,26 @@ namespace AzurlaneCalculator.Stores
 			boost *= (MvpFlg ? 2.0M : 1.0M);
 			boost *= (CondFlg ? 1.2M : 1.0M);
 			boost *= (RankSFlg ? 1.2M : 1.0M);
+			return boost;
+		}
+		// 指揮官の最大レベル・最小レベル
+		public static int MinAdmiralLevel { get; } = 1;
+		public static int MaxAdmiralLevel { get; } = 111;
+		// 寮舎における獲得経験値(毎時)を計算する
+		public static int RoomExp(int AdmiralLevel)
+			=> AdmiralLevel * 12 + 240;
+		// 寮舎経験値に施すブーストを計算
+		public static decimal RoomExpBoost(
+			int FleetCount,
+			bool CondFlg2, bool Add5PerFlg,
+			bool Add10PerFlg, bool Add20PerFlg) {
+			decimal boost = 1.0M;
+			boost *= fleetCountCoeff[FleetCount - 1];
+			boost *= (CondFlg2 ? 1.2M : 1.0M);
+			boost *= 1.0M
+				+ (Add5PerFlg ? 0.05M : 0.0M)
+				+ (Add10PerFlg ? 0.1M : 0.0M)
+				+ (Add20PerFlg ? 0.2M : 0.0M);
 			return boost;
 		}
 	}

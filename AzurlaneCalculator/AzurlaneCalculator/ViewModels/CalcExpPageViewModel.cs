@@ -20,7 +20,7 @@ namespace AzurlaneCalculator.ViewModels
 			= new ReactiveProperty<int>(1);
 		public ReactiveProperty<int> GoalLevel { get; }
 			= new ReactiveProperty<int>(1);
-		public ReadOnlyReactiveProperty<string> OutputText { get; }
+
 		public ReactiveProperty<string> StageName { get; }
 			= new ReactiveProperty<string>("1-1");
 		public ReactiveProperty<string> EnemyType { get; }
@@ -33,11 +33,31 @@ namespace AzurlaneCalculator.ViewModels
 			= new ReactiveProperty<bool>(false);
 		public ReactiveProperty<bool> RankSFlg { get; }
 			= new ReactiveProperty<bool>(true);
+		public ReadOnlyReactiveProperty<string> OutputText { get; }
+
+		public ReactiveProperty<int> AdmiralLevel { get; }
+			= new ReactiveProperty<int>(80);
+		public ReactiveProperty<int> FleetCount { get; }
+			= new ReactiveProperty<int>(5);
+		public ReactiveProperty<bool> CondFlg2 { get; }
+			= new ReactiveProperty<bool>(false);
+		public ReactiveProperty<bool> Add5PerFlg { get; }
+			= new ReactiveProperty<bool>(false);
+		public ReactiveProperty<bool> Add10PerFlg { get; }
+			= new ReactiveProperty<bool>(false);
+		public ReactiveProperty<bool> Add20PerFlg { get; }
+			= new ReactiveProperty<bool>(false);
+		public ReadOnlyReactiveProperty<string> OutputText2 { get; }
+
 		// コレクション
 		public List<int> LevelList { get; }
 		public List<string> StageNameList { get; }
 		public List<string> EnemyTypeList { get; }
 			= new List<string> { "小型", "中型", "大型", "ボス", "周回" };
+		public List<int> AdmiralLevelList { get; }
+		public List<int> FleetCountList { get; }
+			= new List<int> { 1, 2, 3, 4, 5 };
+
 
 		// コンストラクタ
 		public CalcExpPageViewModel()
@@ -53,6 +73,12 @@ namespace AzurlaneCalculator.ViewModels
 			{
 				StageNameList = CalcExp.StageNameList;
 			}
+			{
+				AdmiralLevelList = new List<int>();
+				for (int i = CalcExp.MinAdmiralLevel; i <= CalcExp.MaxAdmiralLevel; ++i) {
+					AdmiralLevelList.Add(i);
+				}
+			}
 			// ReadOnlyReactivePropertyを設定
 			OutputText = StartLevel.CombineLatest(
 				GoalLevel, StageName, EnemyType, LeaderFlg, MvpFlg,
@@ -63,7 +89,7 @@ namespace AzurlaneCalculator.ViewModels
 					output += $"必要経験値：{goalExp - startExp}";
 					int wantExp = goalExp - startExp;
 					int getExp = CalcExp.StageExp(sn, et);
-					getExp = (int)(getExp * CalcExp.ExpBoost(lf, mf, cf, sf));
+					getExp = (int)(getExp * CalcExp.StageExpBoost(lf, mf, cf, sf));
 					if (getExp > 0) {
 						output += $"\n取得経験値：{getExp}";
 						output += $"\n必要回数：{Math.Ceiling(1.0 * wantExp / getExp)}";
@@ -71,6 +97,40 @@ namespace AzurlaneCalculator.ViewModels
 					else if(getExp == 0){
 						output += "\n取得経験値：―";
 						output += "\n必要回数：―";
+					}
+					else {
+						output += "\n取得経験値：不明";
+						output += "\n必要回数：―";
+					}
+					return output;
+				}
+			).ToReadOnlyReactiveProperty();
+			OutputText2 = StartLevel.CombineLatest(
+				GoalLevel, AdmiralLevel, FleetCount, CondFlg2, Add5PerFlg,
+				Add10PerFlg, Add20PerFlg, (sl, gl, al, fc, cf2, a5f, a10f, a20f) => {
+					string output = "";
+					int startExp = CalcExp.LevelExp(sl);
+					int goalExp = CalcExp.LevelExp(gl);
+					output += $"必要経験値：{goalExp - startExp}";
+					int wantExp = goalExp - startExp;
+					int getExp = CalcExp.RoomExp(al);
+					getExp = (int)(getExp * CalcExp.RoomExpBoost(fc, cf2, a5f, a10f, a20f));
+					if (getExp > 0) {
+						output += $"\n取得経験値：{getExp}";
+						decimal time = 1.0M * wantExp / getExp;
+						output += $"\n必要時間：{Math.Round(time, 1)}時間";
+						if(time >= 24.0M) {
+							time /= 24.0M;
+							output += $"\n＝{Math.Round(time, 1)}日";
+							if(time >= 30.0M) {
+								time /= 30.0M;
+								output += $"\n＝{Math.Round(time, 1)}ヶ月";
+							}
+						}
+					}
+					else if (getExp == 0) {
+						output += "\n取得経験値：―";
+						output += "\n必要時間：―";
 					}
 					else {
 						output += "\n取得経験値：不明";
