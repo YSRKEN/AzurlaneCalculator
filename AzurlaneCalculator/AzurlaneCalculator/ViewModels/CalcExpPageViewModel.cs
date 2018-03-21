@@ -25,6 +25,14 @@ namespace AzurlaneCalculator.ViewModels
 			= new ReactiveProperty<string>("1-1");
 		public ReactiveProperty<string> EnemyType { get; }
 			= new ReactiveProperty<string>("周回");
+		public ReactiveProperty<bool> LeaderFlg { get; }
+			= new ReactiveProperty<bool>(false);
+		public ReactiveProperty<bool> MvpFlg { get; }
+			= new ReactiveProperty<bool>(false);
+		public ReactiveProperty<bool> CondFlg { get; }
+			= new ReactiveProperty<bool>(false);
+		public ReactiveProperty<bool> RankSFlg { get; }
+			= new ReactiveProperty<bool>(true);
 		// コレクション
 		public List<int> LevelList { get; }
 		public List<string> StageNameList { get; }
@@ -47,13 +55,15 @@ namespace AzurlaneCalculator.ViewModels
 			}
 			// ReadOnlyReactivePropertyを設定
 			OutputText = StartLevel.CombineLatest(
-				GoalLevel, StageName, EnemyType, (sl, gl, sn, et) => {
+				GoalLevel, StageName, EnemyType, LeaderFlg, MvpFlg,
+				CondFlg, RankSFlg, (sl, gl, sn, et, lf, mf, cf, sf) => {
 					string output = "";
 					int startExp = CalcExp.LevelExp(sl);
 					int goalExp = CalcExp.LevelExp(gl);
 					output += $"必要経験値：{goalExp - startExp}";
 					int wantExp = goalExp - startExp;
 					int getExp = CalcExp.StageExp(sn, et);
+					getExp = (int)(getExp * CalcExp.ExpBoost(lf, mf, cf, sf));
 					if (getExp > 0) {
 						output += $"\n取得経験値：{getExp}";
 						output += $"\n必要回数：{Math.Ceiling(1.0 * wantExp / getExp)}";

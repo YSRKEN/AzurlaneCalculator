@@ -126,5 +126,16 @@ namespace AzurlaneCalculator.Stores
 				return 0;
 			}
 		}
+		// 海域経験値に施すブーストを計算
+		public static decimal ExpBoost(
+			bool LeaderFlg, bool MvpFlg,
+			bool CondFlg, bool RankSFlg) {
+			decimal boost = 1.0M;
+			boost *= (LeaderFlg ? 1.5M : 1.0M);
+			boost *= (MvpFlg ? 2.0M : 1.0M);
+			boost *= (CondFlg ? 1.2M : 1.0M);
+			boost *= (RankSFlg ? 1.2M : 1.0M);
+			return boost;
+		}
 	}
 }

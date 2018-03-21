@@ -39,6 +39,10 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="auto"/>
 					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -48,6 +52,14 @@
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
 				<Label Grid.Row="0" Grid.Column="1" Text="対象"
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Label Grid.Row="0" Grid.Column="2" Text="旗艦"
+				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Label Grid.Row="0" Grid.Column="3" Text="MVP"
+				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Label Grid.Row="0" Grid.Column="4" Text="キラ"
+				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Label Grid.Row="0" Grid.Column="5" Text="S勝利"
+				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
 				<Picker Grid.Row="1" Grid.Column="0" WidthRequest="50"
 				HorizontalOptions="Center" VerticalOptions="Center"
 				ItemsSource="{Binding StageNameList}"
@@ -56,6 +68,18 @@
 				HorizontalOptions="Center" VerticalOptions="Center"
 				ItemsSource="{Binding EnemyTypeList}"
 				SelectedItem="{Binding EnemyType.Value, Mode=TwoWay}"/>
+				<Switch Grid.Row="1" Grid.Column="2" WidthRequest="50"
+				HorizontalOptions="Center" VerticalOptions="Center"
+				IsToggled="{Binding LeaderFlg.Value}"/>
+				<Switch Grid.Row="1" Grid.Column="3" WidthRequest="50"
+				HorizontalOptions="Center" VerticalOptions="Center"
+				IsToggled="{Binding MvpFlg.Value}"/>
+				<Switch Grid.Row="1" Grid.Column="4" WidthRequest="50"
+				HorizontalOptions="Center" VerticalOptions="Center"
+				IsToggled="{Binding CondFlg.Value}"/>
+				<Switch Grid.Row="1" Grid.Column="5" WidthRequest="50"
+				HorizontalOptions="Center" VerticalOptions="Center"
+				IsToggled="{Binding RankSFlg.Value}"/>
 			</Grid>
 			<!-- 計算結果 -->
 			<Label Text="計算結果" Margin="0,10,0,0"
