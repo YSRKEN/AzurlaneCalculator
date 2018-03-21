@@ -39,14 +39,10 @@ namespace AzurlaneCalculator.ViewModels
 			= new ReactiveProperty<int>(80);
 		public ReactiveProperty<int> FleetCount { get; }
 			= new ReactiveProperty<int>(5);
-		public ReactiveProperty<bool> CondFlg2 { get; }
-			= new ReactiveProperty<bool>(false);
-		public ReactiveProperty<bool> Add5PerFlg { get; }
-			= new ReactiveProperty<bool>(false);
-		public ReactiveProperty<bool> Add10PerFlg { get; }
-			= new ReactiveProperty<bool>(false);
-		public ReactiveProperty<bool> Add20PerFlg { get; }
-			= new ReactiveProperty<bool>(false);
+		public ReactiveProperty<int> RoomCond { get; }
+			= new ReactiveProperty<int>(100);
+		public ReactiveProperty<int> RoomBoost { get; }
+			= new ReactiveProperty<int>(0);
 		public ReadOnlyReactiveProperty<string> OutputText2 { get; }
 
 		// コレクション
@@ -57,7 +53,9 @@ namespace AzurlaneCalculator.ViewModels
 		public List<int> AdmiralLevelList { get; }
 		public List<int> FleetCountList { get; }
 			= new List<int> { 1, 2, 3, 4, 5 };
-
+		public List<int> RoomCondList { get; }
+		public List<int> RoomBoostList { get; }
+			= new List<int> { 0, 5, 10, 15, 20, 25, 30, 35 };
 
 		// コンストラクタ
 		public CalcExpPageViewModel()
@@ -77,6 +75,12 @@ namespace AzurlaneCalculator.ViewModels
 				AdmiralLevelList = new List<int>();
 				for (int i = CalcExp.MinAdmiralLevel; i <= CalcExp.MaxAdmiralLevel; ++i) {
 					AdmiralLevelList.Add(i);
+				}
+			}
+			{
+				RoomCondList = new List<int>();
+				for (int i = CalcExp.MinRoomCond; i <= CalcExp.MaxRoomCond; ++i) {
+					RoomCondList.Add(i);
 				}
 			}
 			// ReadOnlyReactivePropertyを設定
@@ -106,15 +110,15 @@ namespace AzurlaneCalculator.ViewModels
 				}
 			).ToReadOnlyReactiveProperty();
 			OutputText2 = StartLevel.CombineLatest(
-				GoalLevel, AdmiralLevel, FleetCount, CondFlg2, Add5PerFlg,
-				Add10PerFlg, Add20PerFlg, (sl, gl, al, fc, cf2, a5f, a10f, a20f) => {
+				GoalLevel, AdmiralLevel, FleetCount, RoomCond, RoomBoost,
+				(sl, gl, al, fc, rc, rb) => {
 					string output = "";
 					int startExp = CalcExp.LevelExp(sl);
 					int goalExp = CalcExp.LevelExp(gl);
 					output += $"必要経験値：{goalExp - startExp}";
 					int wantExp = goalExp - startExp;
 					int getExp = CalcExp.RoomExp(al);
-					getExp = (int)(getExp * CalcExp.RoomExpBoost(fc, cf2, a5f, a10f, a20f));
+					getExp = (int)(getExp * CalcExp.RoomExpBoost(fc, rc, rb));
 					if (getExp > 0) {
 						output += $"\n取得経験値：{getExp}";
 						decimal time = 1.0M * wantExp / getExp;

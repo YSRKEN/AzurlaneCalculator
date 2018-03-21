@@ -128,24 +128,18 @@
 					<ColumnDefinition Width="auto"/>
 					<ColumnDefinition Width="auto"/>
 					<ColumnDefinition Width="auto"/>
-					<ColumnDefinition Width="auto"/>
-					<ColumnDefinition Width="auto"/>
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 					<RowDefinition/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				<Label Grid.Row="0" Grid.Column="0" Text="Lv"
+				<Label Grid.Row="0" Grid.Column="0" Text="指揮官Lv"
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Label Grid.Row="0" Grid.Column="1" Text="隻"
+				<Label Grid.Row="0" Grid.Column="1" Text="隻数"
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Label Grid.Row="0" Grid.Column="2" Text="キラ"
+				<Label Grid.Row="0" Grid.Column="2" Text="快適度"
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Label Grid.Row="0" Grid.Column="3" Text="+5%"
-				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Label Grid.Row="0" Grid.Column="4" Text="+10%"
-				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Label Grid.Row="0" Grid.Column="5" Text="+20%"
+				<Label Grid.Row="0" Grid.Column="3" Text="効率+%"
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
 				<Picker Grid.Row="1" Grid.Column="0" WidthRequest="50"
 				HorizontalOptions="Center" VerticalOptions="Center"
@@ -155,18 +149,14 @@
 				HorizontalOptions="Center" VerticalOptions="Center"
 				ItemsSource="{Binding FleetCountList}"
 				SelectedItem="{Binding FleetCount.Value, Mode=TwoWay}"/>
-				<Switch Grid.Row="1" Grid.Column="2" WidthRequest="50"
+				<Picker Grid.Row="1" Grid.Column="2" WidthRequest="50"
 				HorizontalOptions="Center" VerticalOptions="Center"
-				IsToggled="{Binding CondFlg2.Value}"/>
-				<Switch Grid.Row="1" Grid.Column="3" WidthRequest="50"
+				ItemsSource="{Binding RoomCondList}"
+				SelectedItem="{Binding RoomCond.Value, Mode=TwoWay}"/>
+				<Picker Grid.Row="1" Grid.Column="3" WidthRequest="50"
 				HorizontalOptions="Center" VerticalOptions="Center"
-				IsToggled="{Binding Add5PerFlg.Value}"/>
-				<Switch Grid.Row="1" Grid.Column="4" WidthRequest="50"
-				HorizontalOptions="Center" VerticalOptions="Center"
-				IsToggled="{Binding Add10PerFlg.Value}"/>
-				<Switch Grid.Row="1" Grid.Column="5" WidthRequest="50"
-				HorizontalOptions="Center" VerticalOptions="Center"
-				IsToggled="{Binding Add20PerFlg.Value}"/>
+				ItemsSource="{Binding RoomBoostList}"
+				SelectedItem="{Binding RoomBoost.Value, Mode=TwoWay}"/>
 			</Grid>
 			<!-- 計算結果 -->
 			<Label Text="計算結果" Margin="0,10,0,0"
