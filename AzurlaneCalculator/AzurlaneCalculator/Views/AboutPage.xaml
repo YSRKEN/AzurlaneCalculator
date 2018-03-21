@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="AzurlaneCalculator.Views.AboutPage">
+
+	<ContentPage Title="タイトル">
+		<StackLayout>
+			<Label Text="アズレン計算機 Ver.1.0.0"
+			Margin="10,10,10,10" FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center" VerticalOptions="Start"/>
+		</StackLayout>
+	</ContentPage>
+	<ContentPage Title="著作権情報">
+		<StackLayout Margin="10,10,10,10">
+			<Grid HorizontalOptions="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Label Grid.Row="0" Grid.Column="0" Text="著作権者："
+				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
+				<Label Grid.Row="1" Grid.Column="0" Text="バージョン："
+				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
+				<Label Grid.Row="2" Grid.Column="0" Text="Twitter："
+				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
+				<Label Grid.Row="0" Grid.Column="1" Text="YSR"
+				FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
+				<Label Grid.Row="1" Grid.Column="1" Text="1.0.0"
+				FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
+				<Label Grid.Row="2" Grid.Column="1" Text="@YSRKEN"
+				FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
+			</Grid>
+		</StackLayout>
+	</ContentPage>
+	<ContentPage Title="ライセンス情報">
+		<StackLayout Margin="10,10,10,10">
+			<Label Text="・アズレン計算機(当ツール)" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　MIT License" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="・Xamarin.Forms" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　MIT License" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="・ReactiveProperty" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　MIT License" FontSize="Large" HorizontalOptions="Start"/>
+		</StackLayout>
+	</ContentPage>
+</TabbedPage>
