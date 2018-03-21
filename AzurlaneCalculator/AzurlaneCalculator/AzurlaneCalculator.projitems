@@ -14,7 +14,6 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DetailPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcExp.cs" />
@@ -28,9 +27,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml.cs">
       <DependentUpon>CalcExpPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
