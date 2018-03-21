@@ -51,9 +51,9 @@ namespace AzurlaneCalculator.Stores
 					// ・それ以外なら中型艦隊
 					// と定義する
 					int enemyExp = (
-						EnemyExpM == 0
+						EnemyExpM <= 0
 							? EnemyExpS
-							: EnemyExpL == 0
+							: EnemyExpL <= 0
 							? (EnemyExpS + EnemyExpM) / 2
 							: EnemyExpM);
 					return enemyExp * EnemyCount + EnemyExpB;

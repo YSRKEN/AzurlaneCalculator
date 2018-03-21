@@ -54,12 +54,16 @@ namespace AzurlaneCalculator.ViewModels
 					output += $"必要経験値：{goalExp - startExp}";
 					int wantExp = goalExp - startExp;
 					int getExp = CalcExp.StageExp(sn, et);
-					if (getExp != 0) {
+					if (getExp > 0) {
 						output += $"\n取得経験値：{getExp}";
 						output += $"\n必要回数：{Math.Ceiling(1.0 * wantExp / getExp)}";
 					}
-					else {
+					else if(getExp == 0){
 						output += "\n取得経験値：―";
+						output += "\n必要回数：―";
+					}
+					else {
+						output += "\n取得経験値：不明";
 						output += "\n必要回数：―";
 					}
 					return output;
