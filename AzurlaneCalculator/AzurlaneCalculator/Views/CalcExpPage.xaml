@@ -23,15 +23,15 @@
 				<Label Grid.Row="1" Grid.Column="0" Text="目標のレベル："
 				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
 				<Picker Grid.Row="0" Grid.Column="1" WidthRequest="50"
-				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding StartLevelIndex.Value, Mode=TwoWay}"
+				ItemsSource="{Binding LevelList}"
+				SelectedItem="{Binding StartLevel.Value, Mode=TwoWay}"
 				HorizontalOptions="Start" VerticalOptions="Center"/>
 				<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
-				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding GoalLevelIndex.Value, Mode=TwoWay}"
+				ItemsSource="{Binding LevelList}"
+				SelectedItem="{Binding GoalLevel.Value, Mode=TwoWay}"
 				HorizontalOptions="Start" VerticalOptions="Center"/>
 			</Grid>
-			<Label Text="{Binding OutputText.Value, Mode=OneWay}"
-			FontSize="Large" HorizontalOptions="Center"/>
-			<!-- 海域オプションを入力 -->
+			<!-- 海域オプション -->
 			<Label Text="海域オプション" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
@@ -39,26 +39,29 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="auto"/>
 					<ColumnDefinition Width="auto"/>
-					<ColumnDefinition Width="auto"/>
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 					<RowDefinition/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				<Label Grid.Row="0" Grid.Column="0" Text="章"
+				<Label Grid.Row="0" Grid.Column="0" Text="海域"
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Label Grid.Row="0" Grid.Column="1" Text="海域"
-				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Label Grid.Row="0" Grid.Column="2" Text="対象"
+				<Label Grid.Row="0" Grid.Column="1" Text="対象"
 				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
 				<Picker Grid.Row="1" Grid.Column="0" WidthRequest="50"
-				HorizontalOptions="Center" VerticalOptions="Center"/>
+				HorizontalOptions="Center" VerticalOptions="Center"
+				ItemsSource="{Binding StageNameList}"
+				SelectedItem="{Binding StageName.Value, Mode=TwoWay}"/>
 				<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
-				HorizontalOptions="Center" VerticalOptions="Center"/>
-				<Picker Grid.Row="1" Grid.Column="2" WidthRequest="50"
-				HorizontalOptions="Center" VerticalOptions="Center"/>
+				HorizontalOptions="Center" VerticalOptions="Center"
+				ItemsSource="{Binding EnemyTypeList}"
+				SelectedItem="{Binding EnemyType.Value, Mode=TwoWay}"/>
 			</Grid>
-			<Label Text="必要回数：X回"
+			<!-- 計算結果 -->
+			<Label Text="計算結果" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Label Text="{Binding OutputText.Value}"
 			FontSize="Large" HorizontalOptions="Center"/>
 		</StackLayout>
 	</ContentPage>
