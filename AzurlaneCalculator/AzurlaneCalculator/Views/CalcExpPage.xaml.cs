@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace AzurlaneCalculator.Views
 {
-	public partial class CalcExpPage : ContentPage
+	public partial class CalcExpPage : TabbedPage
 	{
 		public CalcExpPage()
 		{

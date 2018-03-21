@@ -1,33 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="AzurlaneCalculator.Views.CalcExpPage">
 
-	<StackLayout>
-		<Label Text="経験値計算機" Margin="10,10,10,10"
-		FontSize="Large" FontAttributes="Bold"
-		HorizontalOptions="Center"/>
-		<Grid HorizontalOptions="Center">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="auto"/>
-				<ColumnDefinition Width="auto"/>
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
-			<Label Grid.Row="0" Grid.Column="0" Text="現在のレベル："
+	<ContentPage Title="海域">
+		<StackLayout>
+			<!-- レベルオプション -->
+			<Label Text="レベルオプション" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Grid HorizontalOptions="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Label Grid.Row="0" Grid.Column="0" Text="現在のレベル："
 				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
-			<Label Grid.Row="1" Grid.Column="0" Text="目標のレベル："
+				<Label Grid.Row="1" Grid.Column="0" Text="目標のレベル："
 				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
-			<Picker Grid.Row="0" Grid.Column="1" WidthRequest="50"
+				<Picker Grid.Row="0" Grid.Column="1" WidthRequest="50"
 				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding StartLevelIndex.Value, Mode=TwoWay}"
 				HorizontalOptions="Start" VerticalOptions="Center"/>
-			<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
+				<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
 				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding GoalLevelIndex.Value, Mode=TwoWay}"
 				HorizontalOptions="Start" VerticalOptions="Center"/>
-		</Grid>
-		<Label Text="{Binding OutputText.Value, Mode=OneWay}"
-		FontSize="Large" HorizontalOptions="Center"/>
-	</StackLayout>
-</ContentPage>
+			</Grid>
+			<Label Text="{Binding OutputText.Value, Mode=OneWay}"
+			FontSize="Large" HorizontalOptions="Center"/>
+			<!-- 海域オプションを入力 -->
+			<Label Text="海域オプション" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Grid HorizontalOptions="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Label Grid.Row="0" Grid.Column="0" Text="章"
+				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Label Grid.Row="0" Grid.Column="1" Text="海域"
+				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Label Grid.Row="0" Grid.Column="2" Text="対象"
+				FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Picker Grid.Row="1" Grid.Column="0" WidthRequest="50"
+				HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
+				HorizontalOptions="Center" VerticalOptions="Center"/>
+				<Picker Grid.Row="1" Grid.Column="2" WidthRequest="50"
+				HorizontalOptions="Center" VerticalOptions="Center"/>
+			</Grid>
+			<Label Text="必要回数：X回"
+			FontSize="Large" HorizontalOptions="Center"/>
+		</StackLayout>
+	</ContentPage>
+
+	<ContentPage Title="寮舎">
+		<StackLayout>
+			<!-- レベル入力 -->
+			<Grid HorizontalOptions="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Label Grid.Row="0" Grid.Column="0" Text="現在のレベル："
+				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
+				<Label Grid.Row="1" Grid.Column="0" Text="目標のレベル："
+				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
+				<Picker Grid.Row="0" Grid.Column="1" WidthRequest="50"
+				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding StartLevelIndex.Value, Mode=TwoWay}"
+				HorizontalOptions="Start" VerticalOptions="Center"/>
+				<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
+				ItemsSource="{Binding LevelList}" SelectedIndex="{Binding GoalLevelIndex.Value, Mode=TwoWay}"
+				HorizontalOptions="Start" VerticalOptions="Center"/>
+			</Grid>
+			<Label Text="{Binding OutputText.Value, Mode=OneWay}"
+			FontSize="Large" HorizontalOptions="Center"/>
+			<!-- オプションを入力 -->
+		</StackLayout>
+	</ContentPage>
+</TabbedPage>
