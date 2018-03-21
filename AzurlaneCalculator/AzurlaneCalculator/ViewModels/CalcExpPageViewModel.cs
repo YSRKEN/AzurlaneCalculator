@@ -15,15 +15,12 @@ namespace AzurlaneCalculator.ViewModels
 		#pragma warning disable 0067
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		// レベル一覧
-		private List<int> levelList;
-
 		// 必要経験値を計算する
 		private string ExpLevelToLevelStr()
 		{
 			// レベルを取得
-			int startLevel = levelList[StartLevelIndex.Value];
-			int goalLevel = levelList[GoalLevelIndex.Value];
+			int startLevel = LevelList[StartLevelIndex.Value];
+			int goalLevel = LevelList[GoalLevelIndex.Value];
 			// 入力チェック
 			if (startLevel < CalcExp.MinLevel || startLevel > CalcExp.MaxLevel)
 				return "<None>";
@@ -39,21 +36,20 @@ namespace AzurlaneCalculator.ViewModels
 		public ReactiveProperty<int> GoalLevelIndex { get; }
 			= new ReactiveProperty<int>(0);
 		public ReadOnlyReactiveProperty<string> OutputText { get; }
-		// ReactiveCollection
-		public ReadOnlyReactiveCollection<string> LevelList { get; }
+		// ObservableCollection
+		public ObservableCollection<int> LevelList { get; }
 
 		// コンストラクタ
 		public CalcExpPageViewModel()
 		{
 			// ReactiveCollectionを設定
 			{
-				levelList = new List<int>();
+				var levelList = new List<int>();
 				for(int i = CalcExp.MinLevel; i <= CalcExp.MaxLevel; ++i)
 				{
 					levelList.Add(i);
 				}
-				var oc = new ObservableCollection<string>(levelList.Select(x => $"{x}").ToList());
-				LevelList = oc.ToReadOnlyReactiveCollection();
+				LevelList = new ObservableCollection<int>(levelList);
 			}
 			// ReadOnlyReactivePropertyを設定
 			OutputText = StartLevelIndex.CombineLatest(
