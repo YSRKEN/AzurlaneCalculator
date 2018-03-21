@@ -157,5 +157,20 @@ namespace AzurlaneCalculator.Stores
 			boost *= 1.0M + 0.01M * RoomBoost;
 			return boost;
 		}
+		// 長時間遠征における獲得経験値(毎時)を計算する
+		public static decimal JobExp(string LongJob) {
+			switch (LongJob) {
+			case "―":
+			return 0;
+			case "初級":  //8時間で8000Exp
+			return 8000.0M / 8;
+			case "中級":  //9時間で12000Exp
+			return 12000.0M / 9;
+			case "上級":  //10時間で18000Exp
+			return 18000.0M / 10;
+			default:
+			return 0;
+			}
+		}
 	}
 }

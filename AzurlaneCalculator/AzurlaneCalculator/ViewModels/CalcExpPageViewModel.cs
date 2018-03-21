@@ -45,17 +45,27 @@ namespace AzurlaneCalculator.ViewModels
 			= new ReactiveProperty<int>(0);
 		public ReadOnlyReactiveProperty<string> OutputText2 { get; }
 
+		public ReactiveProperty<string> LongJob { get; }
+			= new ReactiveProperty<string>("―");
+		//XAMLのTextに「\n」が使えないとかクソすぎでは？
+		public ReactiveProperty<string> ExtraOptionString { get; }
+			= new ReactiveProperty<string>("寮舎経験値に\n長時間遠征の\n経験値を\n加算する");
+
 		// コレクション
 		public List<int> LevelList { get; }
 		public List<string> StageNameList { get; }
 		public List<string> EnemyTypeList { get; }
 			= new List<string> { "小型", "中型", "大型", "ボス", "周回" };
+
 		public List<int> AdmiralLevelList { get; }
 		public List<int> FleetCountList { get; }
 			= new List<int> { 1, 2, 3, 4, 5 };
 		public List<int> RoomCondList { get; }
 		public List<int> RoomBoostList { get; }
 			= new List<int> { 0, 5, 10, 15, 20, 25, 30, 35 };
+
+		public List<string> LongJobList { get; }
+			= new List<string> { "―", "初級", "中級", "上級" };
 
 		// コンストラクタ
 		public CalcExpPageViewModel()
@@ -110,17 +120,18 @@ namespace AzurlaneCalculator.ViewModels
 				}
 			).ToReadOnlyReactiveProperty();
 			OutputText2 = StartLevel.CombineLatest(
-				GoalLevel, AdmiralLevel, FleetCount, RoomCond, RoomBoost,
-				(sl, gl, al, fc, rc, rb) => {
+				GoalLevel, AdmiralLevel, FleetCount, RoomCond,
+				RoomBoost,　LongJob, (sl, gl, al, fc, rc, rb, lj) => {
 					string output = "";
 					int startExp = CalcExp.LevelExp(sl);
 					int goalExp = CalcExp.LevelExp(gl);
 					output += $"必要経験値：{goalExp - startExp}";
 					int wantExp = goalExp - startExp;
-					int getExp = CalcExp.RoomExp(al);
+					decimal getExp = CalcExp.RoomExp(al);
 					getExp = (int)(getExp * CalcExp.RoomExpBoost(fc, rc, rb));
+					getExp += CalcExp.JobExp(lj);
 					if (getExp > 0) {
-						output += $"\n取得経験値：{getExp}";
+						output += $"\n取得経験値：{Math.Round(getExp, 1)}";
 						decimal time = 1.0M * wantExp / getExp;
 						output += $"\n必要時間：{Math.Round(time, 1)}時間";
 						if(time >= 24.0M) {
