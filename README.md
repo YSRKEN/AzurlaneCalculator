@@ -54,3 +54,13 @@ Calculator for Azurlane by Xamarin.Forms
 ## ライセンス
 
 　MIT License
+
+## 更新履歴
+
+### Ver.1.1.0(2018/03/23)
+ - 艦船スキル計算機を実装
+ - 確率計算機を実装
+
+### Ver.1.0.0(2018/03/22)
+
+ - 最初のリリース
