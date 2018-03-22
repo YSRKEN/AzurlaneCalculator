@@ -17,23 +17,30 @@
 				<RowDefinition/>
 				<RowDefinition/>
 				<RowDefinition/>
+				<RowDefinition/>
 			</Grid.RowDefinitions>
-			<Label Grid.Row="0" Grid.Column="0" Text="レベル："
+			<Label Grid.Row="0" Grid.Column="0" Text="現在のレベル："
 			FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
-			<Label Grid.Row="1" Grid.Column="0" Text="余剰経験値："
+			<Label Grid.Row="1" Grid.Column="0" Text="目標のレベル："
 			FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
-			<Label Grid.Row="3" Grid.Column="0" Text="教科書："
+			<Label Grid.Row="2" Grid.Column="0" Text="余剰経験値："
+			FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
+			<Label Grid.Row="4" Grid.Column="0" Text="教科書："
 			FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
 			<Picker Grid.Row="0" Grid.Column="1" WidthRequest="50"
-				ItemsSource="{Binding LevelList}"
-				SelectedItem="{Binding Level.Value, Mode=TwoWay}"
+				ItemsSource="{Binding StartLevelList}"
+				SelectedItem="{Binding StartLevel.Value, Mode=TwoWay}"
 				HorizontalOptions="Start" VerticalOptions="Center"/>
-			<Label Grid.Row="1" Grid.Column="1" Text="{Binding LeaveExp.Value}"
+			<Picker Grid.Row="1" Grid.Column="1" WidthRequest="50"
+				ItemsSource="{Binding GoalLevelList}"
+				SelectedItem="{Binding GoalLevel.Value, Mode=TwoWay}"
+				HorizontalOptions="Start" VerticalOptions="Center"/>
+			<Label Grid.Row="2" Grid.Column="1" Text="{Binding LeaveExp.Value}"
 			FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
-			<Slider Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+			<Slider Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
 			Maximum="{Binding LeaveExpMax.Value}" Minimum="0"
 			Value="{Binding LeaveExpRaw.Value}"/>
-			<Picker Grid.Row="3" Grid.Column="1" WidthRequest="50"
+			<Picker Grid.Row="4" Grid.Column="1" WidthRequest="100"
 				ItemsSource="{Binding BookList}"
 				SelectedIndex="{Binding BookIndex.Value, Mode=TwoWay}"
 				HorizontalOptions="Start" VerticalOptions="Center"/>

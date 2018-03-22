@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AzurlaneCalculator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,12 @@ using Xamarin.Forms.Xaml;
 
 namespace AzurlaneCalculator.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CalcSkillPage : ContentPage
 	{
 		public CalcSkillPage ()
 		{
 			InitializeComponent ();
+			this.BindingContext = new CalcSkillPageViewModel();
 		}
 	}
 }

@@ -18,8 +18,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcExp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcSkill.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Stores\Utility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcExpPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcSkillPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -30,7 +32,7 @@
       <DependentUpon>CalcExpPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CalcSkillPage.xaml.cs">
-       <DependentUpon>CalcSkillPage.xaml</DependentUpon>
+      <DependentUpon>CalcSkillPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
