@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcSkill.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Stores\Utility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcExpPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcProbPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcSkillPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItem.cs" />

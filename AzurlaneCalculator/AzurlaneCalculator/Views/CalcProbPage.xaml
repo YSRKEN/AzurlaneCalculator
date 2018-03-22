@@ -5,10 +5,11 @@
 
 	<ContentPage Title="確率計算">
 		<StackLayout>
-			<Label Text="ドロップ・建造の確率(/回)" Margin="0,10,0,0"
+			<Label Text="ドロップ・建造の確率(％/回)" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
-			<Entry Text="0.50" FontSize="Large" WidthRequest="70"/>
+			<Entry Text="{Binding DropProb.Value}"
+			FontSize="Large" WidthRequest="70"/>
 			<Label Text="ドロップ・建造の試行回数" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
@@ -20,16 +21,21 @@
 					<ColumnDefinition Width="auto"/>
 					<ColumnDefinition Width="auto"/>
 				</Grid.ColumnDefinitions>
-				<Button Grid.Column="0" Text="-10" FontSize="Large" WidthRequest="70" HeightRequest="30"/>
-				<Button Grid.Column="1" Text="-1" FontSize="Large" WidthRequest="50" HeightRequest="30"/>
-				<Entry Grid.Column="2" Text="100" FontSize="Large" WidthRequest="70"/>
-				<Button Grid.Column="3" Text="+1" FontSize="Large" WidthRequest="50" HeightRequest="30"/>
-				<Button Grid.Column="4" Text="+10" FontSize="Large" WidthRequest="70" HeightRequest="30"/>
+				<Button Grid.Column="0" Text="-10" FontSize="Large" WidthRequest="70" HeightRequest="30"
+				Command="{Binding DropCountSub10Command}"/>
+				<Button Grid.Column="1" Text="-1" FontSize="Large" WidthRequest="50" HeightRequest="30"
+				Command="{Binding DropCountSub1Command}"/>
+				<Entry Grid.Column="2" Text="{Binding DropCount.Value}"
+				FontSize="Large" WidthRequest="70"/>
+				<Button Grid.Column="3" Text="+1" FontSize="Large" WidthRequest="50" HeightRequest="30"
+				Command="{Binding DropCountAdd1Command}"/>
+				<Button Grid.Column="4" Text="+10" FontSize="Large" WidthRequest="70" HeightRequest="30"
+				Command="{Binding DropCountAdd10Command}"/>
 			</Grid>
 			<Label Text="計算結果" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
-			<Label Text="成功確率：Hoge[%]" FontSize="Large" HorizontalOptions="Center"/>
+			<Label Text="{Binding Output1.Value}" FontSize="Large" HorizontalOptions="Center"/>
 		</StackLayout>
 	</ContentPage>
 
@@ -38,15 +44,15 @@
 			<Label Text="ドロップ・建造の試行回数" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
-			<Entry Text="100" FontSize="Large" WidthRequest="70"/>
-			<Label Text="ドロップ・建造の成功回数"
+			<Entry Text="{Binding DropCount.Value}" FontSize="Large" WidthRequest="70"/>
+			<Label Text="ドロップ・建造の成功回数" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
-			<Entry Text="10" FontSize="Large" WidthRequest="70"/>
-			<Label Text="計算結果"
+			<Entry Text="{Binding SuccessDropCount.Value}" FontSize="Large" WidthRequest="70"/>
+			<Label Text="計算結果" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
-			<Label Text="成功確率：Hoge[%]" FontSize="Large" HorizontalOptions="Center"/>
+			<Label Text="{Binding Output2.Value}" FontSize="Large" HorizontalOptions="Center"/>
 		</StackLayout>
 	</ContentPage>
 </TabbedPage>

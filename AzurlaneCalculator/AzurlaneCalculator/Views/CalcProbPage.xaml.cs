@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AzurlaneCalculator.ViewModels;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace AzurlaneCalculator.Views
@@ -9,6 +10,7 @@ namespace AzurlaneCalculator.Views
 		public CalcProbPage ()
 		{
 			InitializeComponent ();
+			this.BindingContext = new CalcProbPageViewModel();
 		}
 	}
 }
