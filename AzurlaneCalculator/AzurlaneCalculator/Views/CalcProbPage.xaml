@@ -39,7 +39,7 @@
 		</StackLayout>
 	</ContentPage>
 
-	<ContentPage Title="確率推定">
+	<ContentPage Title="確率推定・検定">
 		<StackLayout>
 			<Label Text="ドロップ・建造の試行回数" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"

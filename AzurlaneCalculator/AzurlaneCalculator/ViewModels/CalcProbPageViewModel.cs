@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reactive.Linq;
 using System.Text;
 
 namespace AzurlaneCalculator.ViewModels
@@ -10,6 +11,12 @@ namespace AzurlaneCalculator.ViewModels
 	{
 		#pragma warning disable 0067
 		public event PropertyChangedEventHandler PropertyChanged;
+
+		// 計算用メソッド
+		//確率Aのベルヌーイ試行にて、1回以上成功する確率がBになる
+		//試行回数Xを求める。このXは切り上げ前とする
+		private double CalcBernoulliProb(double a, double b)
+			=> Math.Log(1.0 - b) / Math.Log(1.0 - a);
 
 		// ReactiveProperty
 		public ReactiveProperty<decimal> DropProb { get; }
@@ -69,7 +76,36 @@ namespace AzurlaneCalculator.ViewModels
 				if (x < 0M) DropProb2.Value = 0M;
 			});
 			// ReadOnlyReactivePropertyを設定
-
+			Output1 = DropProb.CombineLatest(DropCount, (prob, count) => {
+				string output = "";
+				if (prob == 0.0M) {
+					// 特殊処理
+					output += "1回以上成功：0％";
+					output += "\n全て失敗：：100％";
+					output += "\n50,70,90,95,99％成功：";
+					output += "\n∞,∞,∞,∞,∞回";
+					return output;
+				}
+				double prob_ = (double)prob / 100;	//％を通常の確率に変換
+				//
+				double anySuccessPer = (1.0 - Math.Pow(1.0 - prob_, count)) * 100;
+				output += $"1回以上成功：{Math.Round(anySuccessPer, 1)}％";
+				double allFailPer = Math.Pow(1.0 - prob_, count) * 100;
+				output += $"\n全て失敗：{Math.Round(allFailPer, 1)}％";
+				output += $"\n50,70,90,95,99％成功：\n";
+				double per50Count = Math.Ceiling(CalcBernoulliProb(prob_, 0.5));
+				double per70Count = Math.Ceiling(CalcBernoulliProb(prob_, 0.7));
+				double per90Count = Math.Ceiling(CalcBernoulliProb(prob_, 0.9));
+				double per95Count = Math.Ceiling(CalcBernoulliProb(prob_, 0.95));
+				double per99Count = Math.Ceiling(CalcBernoulliProb(prob_, 0.99));
+				output += $"{per50Count},";
+				output += $"{per70Count},";
+				output += $"{per90Count},";
+				output += $"{per95Count},";
+				output += $"{per99Count}回";
+				//
+				return output;
+			}).ToReadOnlyReactiveProperty();
 		}
 	}
 }
