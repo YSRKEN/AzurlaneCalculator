@@ -1,10 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="AzurlaneCalculator.Views.CalcProbPage">
-	<StackLayout>
-		<Label Text="Welcome to Xamarin.Forms!"
-		VerticalOptions="CenterAndExpand" 
-		HorizontalOptions="CenterAndExpand" />
-	</StackLayout>
-</ContentPage>
+
+	<ContentPage Title="確率計算">
+		<StackLayout>
+			<Label Text="ドロップ・建造の確率(/回)" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Entry Text="0.50" FontSize="Large" WidthRequest="70"/>
+			<Label Text="ドロップ・建造の試行回数" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Grid HorizontalOptions="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+				<Button Grid.Column="0" Text="-10" FontSize="Large" WidthRequest="70" HeightRequest="30"/>
+				<Button Grid.Column="1" Text="-1" FontSize="Large" WidthRequest="50" HeightRequest="30"/>
+				<Entry Grid.Column="2" Text="100" FontSize="Large" WidthRequest="70"/>
+				<Button Grid.Column="3" Text="+1" FontSize="Large" WidthRequest="50" HeightRequest="30"/>
+				<Button Grid.Column="4" Text="+10" FontSize="Large" WidthRequest="70" HeightRequest="30"/>
+			</Grid>
+			<Label Text="計算結果" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Label Text="成功確率：Hoge[%]" FontSize="Large" HorizontalOptions="Center"/>
+		</StackLayout>
+	</ContentPage>
+
+	<ContentPage Title="確率推定">
+		<StackLayout>
+			<Label Text="ドロップ・建造の試行回数" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Entry Text="100" FontSize="Large" WidthRequest="70"/>
+			<Label Text="ドロップ・建造の成功回数"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Entry Text="10" FontSize="Large" WidthRequest="70"/>
+			<Label Text="計算結果"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Label Text="成功確率：Hoge[%]" FontSize="Large" HorizontalOptions="Center"/>
+		</StackLayout>
+	</ContentPage>
+</TabbedPage>
