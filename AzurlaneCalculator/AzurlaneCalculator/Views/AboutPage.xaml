@@ -5,9 +5,18 @@
 
 	<ContentPage Title="タイトル">
 		<StackLayout>
-			<Label Text="アズレン計算機 Ver.1.0.0"
+			<Label Text="アズレン計算機 Ver.1.1.0"
 			Margin="10,10,10,10" FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center" VerticalOptions="Start"/>
+			<Label Text="・艦船経験値計算機" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　戦闘を何周／寮舎で何時間" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　過ごせばいいか？" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="・艦船スキル計算機" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　教科書と時間を" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　幾ら消費するか？" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="・確率計算機" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　ドロップ・建造の" FontSize="Large" HorizontalOptions="Start"/>
+			<Label Text="　　確率計算・確率推定" FontSize="Large" HorizontalOptions="Start"/>
 		</StackLayout>
 	</ContentPage>
 	<ContentPage Title="著作権情報">
@@ -30,7 +39,7 @@
 				FontSize="Large" HorizontalOptions="End" VerticalOptions="Center"/>
 				<Label Grid.Row="0" Grid.Column="1" Text="YSR"
 				FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
-				<Label Grid.Row="1" Grid.Column="1" Text="1.0.0"
+				<Label Grid.Row="1" Grid.Column="1" Text="1.1.0"
 				FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
 				<Label Grid.Row="2" Grid.Column="1" Text="@YSRKEN"
 				FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
