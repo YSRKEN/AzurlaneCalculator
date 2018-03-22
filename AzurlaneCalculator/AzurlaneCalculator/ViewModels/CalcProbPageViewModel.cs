@@ -17,6 +17,67 @@ namespace AzurlaneCalculator.ViewModels
 		//試行回数Xを求める。このXは切り上げ前とする
 		private double CalcBernoulliProb(double a, double b)
 			=> Math.Log(1.0 - b) / Math.Log(1.0 - a);
+		//範囲[a,b]においてシンプソン積分を行う
+		private double SimpsonMethod(double a, double b, int n, Func<double, double> func) {
+			// 分割幅hを求める
+			double h = (b - a) / n;
+			// ヘルパーメソッド
+			Func<int, double> index = (int i) => a + i * h;
+			// 計算を行う
+			double sum = func(a) + func(b);
+			for (int j = 1; j < n / 2; ++j) {
+				sum += 2.0 * func(index(2 * j));
+			}
+			for (int j = 1; j <= n / 2; ++j) {
+				sum += 4.0 * func(index(2 * j - 1));
+			}
+			sum *= h / 3;
+			return sum;
+		}
+		//ベータ関数B(a,b)の値を求める
+		private double BetaFunction(double a, double b) {
+			// 内部の関数をラムダ式で定義する
+			Func<double, double> func = (double t) =>
+				(Math.Pow(t, a - 1.0) * Math.Pow(1.0 - t, b - 1.0));
+			// シンプソン積分した結果を返す
+			return SimpsonMethod(0.0, 1.0, 100, func);
+		}
+		//ベータ分布の累積密度関数(BetaCDF(x,a,b))を求める
+		private double BetaCDF(double x, double a, double b) {
+			Func<double, double> func = (double t) =>
+				(Math.Pow(t, a - 1.0) * Math.Pow(1.0 - t, b - 1.0));
+			return SimpsonMethod(0.0, x, 100, func) / BetaFunction(a, b);
+		}
+		//ベータ分布の累積密度関数の逆関数(BetaCDF^-1(p,a,b))を求める
+		private double InverseBetaCDF(double p, double a, double b) {
+			// 前提となる関数を定義する
+			Func<double, double> func = (double x) => (BetaCDF(x, a, b) - p);
+			// 初期値を設定する
+			double x1 = 0.0, f1 = func(x1);
+			double x2 = 1.0, f2 = func(x2);
+			double x3 = 0.0;
+			double eps = 1.0e-6;
+			//二分法で探索する
+			while(x2 - x1 > eps) {
+				x3 = (x1 + x2) / 2;
+				double f3 = func(x3);
+				if(f1 * f3 < 0.0) {
+					x2 = x3;
+				}
+				else {
+					x1 = x3;
+				}
+			}
+			// 結果を返す
+			return x3;
+		}
+		//N回試行してK回成功した際、二項分布のX％信頼区間を求める(Clopper-Pearson method)
+		private double[] ClopperPearsonMethod(int n, int k, decimal x) {
+			decimal a = 1.0M - x;
+			double lb = 1.0 - InverseBetaCDF((double)(1.0M - a / 2), n - k + 1, k);
+			double ub = 1.0 - InverseBetaCDF((double)(a / 2), n - k, k + 1);
+			return new double[] { lb, ub };
+		}
 
 		// ReactiveProperty
 		public ReactiveProperty<decimal> DropProb { get; }
@@ -106,6 +167,16 @@ namespace AzurlaneCalculator.ViewModels
 				//
 				return output;
 			}).ToReadOnlyReactiveProperty();
+			Output2 = DropCount2.CombineLatest(
+				SuccessDropCount, DropProb2, (all, success, prob) => {
+					string output = "";
+					output += $"成功確率：{Math.Round(100.0M * success / all, 1)}％";
+					var ci = ClopperPearsonMethod(all, success, 0.95M);
+					output += $"\n95％信頼区間：{Math.Round(100.0 * ci[0], 1)}～{Math.Round(100.0 * ci[1], 1)}％";
+					output += $"\np値：{0.05}";
+					return output;
+				}
+			).ToReadOnlyReactiveProperty();
 		}
 	}
 }
