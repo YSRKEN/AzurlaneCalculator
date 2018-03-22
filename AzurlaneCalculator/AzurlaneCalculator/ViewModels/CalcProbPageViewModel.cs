@@ -78,6 +78,42 @@ namespace AzurlaneCalculator.ViewModels
 			double ub = 1.0 - InverseBetaCDF((double)(a / 2), n - k, k + 1);
 			return new double[] { lb, ub };
 		}
+		//N回試行してK回成功した際、確率Xと見なす際のp値を求める(Sterneの手法)
+		private double SterneMethod(int n, int k, decimal x) {
+			// 組み合わせaCbを実数で求める(※精度を犠牲にして楽な実装を取った)
+			Func<int, int, double> comb = (int a, int b) => {
+				double result = 1.0;
+				for (int num1 = a, num2 = b, r = 0; r < b; --num1, --num2, ++r) {
+					result *= 1.0 * num1;
+					result /= 1.0 * num2;
+				}
+				return result;
+			};
+			// ベルヌーイ試行の確率を求める関数
+			Func<int, int, double, double> prob = (int a, int b, double s) => {
+				double result = comb(a, b);
+				for (int i = 0; i < b; ++i)
+					result *= s;
+				for (int i = 0; i < a - b; ++i)
+					result *= (1.0 - s);
+				return result;
+			};
+			// 地道に計算する
+			double sum = 0.0;
+			double x_ = (double)x / 100.0;
+			double limitprob = prob(n, k, x_);
+			sum += limitprob;
+			for (int i = 0; i < k; ++i) {
+				sum += prob(n, i, x_);
+			}
+			for(int i = n; i >= 0; --i) {
+				double temp = prob(n, i, x_);
+				if (limitprob <= temp)
+					break;
+				sum += temp;
+			}
+			return sum;
+		}
 
 		// ReactiveProperty
 		public ReactiveProperty<decimal> DropProb { get; }
@@ -171,9 +207,9 @@ namespace AzurlaneCalculator.ViewModels
 				SuccessDropCount, DropProb2, (all, success, prob) => {
 					string output = "";
 					output += $"成功確率：{Math.Round(100.0M * success / all, 1)}％";
-					var ci = ClopperPearsonMethod(all, success, 0.95M);
+					double[] ci = ClopperPearsonMethod(all, success, 0.95M);
 					output += $"\n95％信頼区間：{Math.Round(100.0 * ci[0], 1)}～{Math.Round(100.0 * ci[1], 1)}％";
-					output += $"\np値：{0.05}";
+					output += $"\np値：{Math.Round(SterneMethod(all, success, prob), 6)}";
 					return output;
 				}
 			).ToReadOnlyReactiveProperty();
