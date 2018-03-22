@@ -19,6 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcExp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcProb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcSkill.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Stores\Utility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcExpPageViewModel.cs" />
