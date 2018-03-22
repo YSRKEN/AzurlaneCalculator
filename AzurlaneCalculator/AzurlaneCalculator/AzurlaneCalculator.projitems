@@ -10,41 +10,50 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CalcProbPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CalcSkillPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DetailPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcExp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcProb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Stores\CalcSkill.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Stores\Utility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcExpPageViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
-      <DependentUpon>AboutPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcProbPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalcSkillPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml.cs">
       <DependentUpon>CalcExpPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml.cs">
-      <DependentUpon>MasterPage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CalcProbPage.xaml.cs">
+      <DependentUpon>CalcProbPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CalcSkillPage.xaml.cs">
+      <DependentUpon>CalcSkillPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterPageViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\LevelExpList.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\MapExpList.txt" />
   </ItemGroup>
 </Project>

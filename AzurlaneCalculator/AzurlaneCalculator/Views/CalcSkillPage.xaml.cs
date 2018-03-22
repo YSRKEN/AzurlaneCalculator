@@ -5,12 +5,12 @@ using Xamarin.Forms.Xaml;
 namespace AzurlaneCalculator.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CalcExpPage : TabbedPage
+	public partial class CalcSkillPage : ContentPage
 	{
-		public CalcExpPage()
+		public CalcSkillPage ()
 		{
-			InitializeComponent();
-			this.BindingContext = new CalcExpPageViewModel();
+			InitializeComponent ();
+			this.BindingContext = new CalcSkillPageViewModel();
 		}
 	}
 }

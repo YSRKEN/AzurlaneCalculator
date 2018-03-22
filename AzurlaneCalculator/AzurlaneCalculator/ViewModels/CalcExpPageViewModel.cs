@@ -1,11 +1,8 @@
 ﻿using Reactive.Bindings;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Reactive.Linq;
-using System.Linq;
 using AzurlaneCalculator.Stores;
 
 namespace AzurlaneCalculator.ViewModels
