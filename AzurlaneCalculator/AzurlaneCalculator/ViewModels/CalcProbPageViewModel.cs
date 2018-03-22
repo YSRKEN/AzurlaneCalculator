@@ -17,8 +17,12 @@ namespace AzurlaneCalculator.ViewModels
 		public ReactiveProperty<int> DropCount { get; }
 			= new ReactiveProperty<int>(100);
 		public ReadOnlyReactiveProperty<string> Output1 { get; }
+		public ReactiveProperty<int> DropCount2 { get; }
+			= new ReactiveProperty<int>(100);
 		public ReactiveProperty<int> SuccessDropCount { get; }
 			= new ReactiveProperty<int>(10);
+		public ReactiveProperty<decimal> DropProb2 { get; }
+			= new ReactiveProperty<decimal>(3.0M);
 		public ReadOnlyReactiveProperty<string> Output2 { get; }
 
 		// ReactiveCommand
@@ -48,14 +52,21 @@ namespace AzurlaneCalculator.ViewModels
 				if (x < 0M) DropProb.Value = 0M;
 			});
 			DropCount.Subscribe(x => {
-				if (x <= 0) x = 1;
+				if (x <= 0) DropCount.Value = 1;
+			});
+			DropCount2.Subscribe(x => {
+				if (x <= 0) DropCount2.Value = 1;
 				if (SuccessDropCount.Value > x)
 					SuccessDropCount.Value = x;
 			});
 			SuccessDropCount.Subscribe(x => {
-				if (x < 0) x = 0;
-				if (DropCount.Value < x)
-					DropCount.Value = x;
+				if (x < 0) SuccessDropCount.Value = 0;
+				if (DropCount2.Value < x)
+					DropCount2.Value = x;
+			});
+			DropProb2.Subscribe(x => {
+				if (x > 100M) DropProb2.Value = 100M;
+				if (x < 0M) DropProb2.Value = 0M;
 			});
 			// ReadOnlyReactivePropertyを設定
 

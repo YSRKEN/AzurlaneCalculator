@@ -44,11 +44,16 @@
 			<Label Text="ドロップ・建造の試行回数" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
-			<Entry Text="{Binding DropCount.Value}" FontSize="Large" WidthRequest="70"/>
+			<Entry Text="{Binding DropCount2.Value}" FontSize="Large" WidthRequest="70"/>
 			<Label Text="ドロップ・建造の成功回数" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
 			<Entry Text="{Binding SuccessDropCount.Value}" FontSize="Large" WidthRequest="70"/>
+			<Label Text="ドロップ・建造の確率予定(％/回)" Margin="0,10,0,0"
+			FontSize="Large" FontAttributes="Bold"
+			HorizontalOptions="Center"/>
+			<Entry Text="{Binding DropProb2.Value}"
+			FontSize="Large" WidthRequest="70"/>
 			<Label Text="計算結果" Margin="0,10,0,0"
 			FontSize="Large" FontAttributes="Bold"
 			HorizontalOptions="Center"/>
