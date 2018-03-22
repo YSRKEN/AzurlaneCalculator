@@ -102,15 +102,10 @@ namespace AzurlaneCalculator.ViewModels
 			double sum = 0.0;
 			double x_ = (double)x / 100.0;
 			double limitprob = prob(n, k, x_);
-			sum += limitprob;
-			for (int i = 0; i < k; ++i) {
-				sum += prob(n, i, x_);
-			}
-			for(int i = n; i >= 0; --i) {
+			for (int i = 0; i <= n; ++i) {
 				double temp = prob(n, i, x_);
-				if (limitprob <= temp)
-					break;
-				sum += temp;
+				if(limitprob >= temp)
+					sum += temp;
 			}
 			return sum;
 		}
