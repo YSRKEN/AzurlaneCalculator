@@ -11,6 +11,7 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CalcSkillPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DetailPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml" />
@@ -28,6 +29,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\CalcExpPage.xaml.cs">
       <DependentUpon>CalcExpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CalcSkillPage.xaml.cs">
+       <DependentUpon>CalcSkillPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
@@ -38,7 +42,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
   </ItemGroup>
   <ItemGroup>

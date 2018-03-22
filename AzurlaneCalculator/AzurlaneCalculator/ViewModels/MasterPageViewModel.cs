@@ -26,6 +26,7 @@ namespace AzurlaneCalculator.ViewModels
 			{
 				var menuList = new List<MenuItem> {
 				new MenuItem {Title = "経験値計算機", TargetType = typeof(CalcExpPage) },
+				new MenuItem {Title = "スキル計算機", TargetType = typeof(CalcSkillPage) },
 				new MenuItem {Title = "このアプリについて", TargetType = typeof(AboutPage) },
 			};
 				var oc = new ObservableCollection<MenuItem>(menuList);
